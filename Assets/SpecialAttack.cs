@@ -20,6 +20,7 @@ public class SpecialAttack : MonoBehaviour
 
     void Update()
     {
+        // Makes specialAttack object move from caster to target and gives damage to victim
         t += Time.deltaTime / timeToReachTarget;
         transform.position = Vector3.Lerp(transform.position, target.transform.position, t);
 

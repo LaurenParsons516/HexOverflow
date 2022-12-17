@@ -13,7 +13,7 @@ public class FireworkSpawner : MonoBehaviour
     {
         StartCoroutine(startFireworks());
     }
-    
+    // Spwans fireworks at random position 
     IEnumerator startFireworks()
     {
         while (gameObject.activeSelf)

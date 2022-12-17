@@ -49,6 +49,7 @@ public class BattleSystem : MonoBehaviour
         StartCoroutine(SetUpBattle());
     }
 
+    // Sets all text boxes, health bars, and sprites for battle
     IEnumerator SetUpBattle()
     {
         errorBox.SetActive(false);
@@ -82,6 +83,7 @@ public class BattleSystem : MonoBehaviour
         PlayerTurn();
     }
 
+    // Runs player's attack code and handles exceptions found in their code
     IEnumerator PlayerAttack()
     {
 
@@ -92,7 +94,7 @@ public class BattleSystem : MonoBehaviour
         scope.SetVariable("attack", new System.Func<int, bool>(enemyUnit.TakeDamage));
         //scope.GetVariable("attack").__name__ = "attack";
 
-        // defining python funtion and linking the to C# methods
+        // Defining python funtion and linking the to C# methods
 
         if (FunctionTracker.IsUnlocked("Fireball"))
         {
@@ -109,16 +111,18 @@ public class BattleSystem : MonoBehaviour
             scope.SetVariable("wrench_attack", new System.Action(() => performSpecialAttack(wrench, 5)));
         }
 
-        scope.SetVariable("log", new System.Action<object>(Debug.Log)); //used to be "print", but didn't work because it is using Python 2 which is a statement, not a function.
+        scope.SetVariable("log", new System.Action<object>(Debug.Log)); // Used to be "print", but didn't work because it is using Python 2 which is a statement, not a function.
         string code = codeInput.text;
         Debug.Log(code);
 
-        //Exception handling for Python code
+        // Exception handling for Python code
         try
         {
+            // If the player entered code, run it
+            // If the player did not enter code, notify them to enter code
             if (!string.IsNullOrEmpty(code))
             {
-                // executing code with "special attack type" functions defined earlier
+                // Executing code with "special attack type" functions defined earlier
                 eng.Execute(code, scope);
             } else
             {
@@ -160,6 +164,7 @@ public class BattleSystem : MonoBehaviour
         }
     }
 
+    // Function used to add health to player's hp
     IEnumerator PlayerHeal()
     {
         playerUnit.Heal(5);
@@ -174,6 +179,9 @@ public class BattleSystem : MonoBehaviour
 
     }
 
+    // Changes dialogue text to notify player that it is the enemy's turn
+    // Enemy attacks, and takes player's hp down
+    // If player is dead, it calls the EndBattle coroutine
     IEnumerator EnemyTurn()
     {
         dialogueText.text = enemyUnit.unitName + " attacks!";
@@ -198,6 +206,7 @@ public class BattleSystem : MonoBehaviour
         }
     }
 
+    // Changes dialogue text, depending on the battle state, to notify the player they won or lost
     IEnumerator EndBattle()
     {
         if (state == BattleState.WON)
@@ -211,11 +220,13 @@ public class BattleSystem : MonoBehaviour
         }
     }
 
+    // Changes dialogue text box to notify player that it is their turn
     void PlayerTurn()
     {
         dialogueText.text = "Choose an action:";
     }
 
+    // If it is the player's turn, this simply calls the attack coroutine when the attack button is pressed
     public void OnAttackButton()
     {
         if (state != BattleState.PLAYERTURN)
@@ -226,6 +237,7 @@ public class BattleSystem : MonoBehaviour
         StartCoroutine(PlayerAttack());
     }
 
+    // If it is the player's turn, this simply calls heal coroutine when heal button is pressed
     public void OnHealButton()
     {
         if (state != BattleState.PLAYERTURN)
@@ -236,6 +248,7 @@ public class BattleSystem : MonoBehaviour
         StartCoroutine(PlayerHeal());
     }
 
+    // Instantiates special attack sprite and sets the caster/victim 
     public void performSpecialAttack(Sprite attackType, int damageAmount)
     {
         GameObject attack = Instantiate(specialAttackPrefab) as GameObject;

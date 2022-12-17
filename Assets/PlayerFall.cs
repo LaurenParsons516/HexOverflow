@@ -16,6 +16,7 @@ public class PlayerFall : MonoBehaviour
 
     void Update()
     {
+        // Checks to see if player is 50 units away from camera... if so load gameover scene
         if (camera1.transform.position.y > player.transform.position.y + 50)
         {
             SceneManager.LoadScene(3);

@@ -14,6 +14,8 @@ public class FireworkBehaviour : MonoBehaviour
     private int currentSprite;
     private float maxHeight;
 
+    // Throws fireworks in the air
+    // Sets color, velocity, and location randomly
     void Start()
     {
         Rigidbody2D body = GetComponent<Rigidbody2D>();
@@ -25,6 +27,7 @@ public class FireworkBehaviour : MonoBehaviour
     }
 
     // Update is called once per frame
+    // Executes firework animation and destroys them once they start to fall
     void Update()
     {
         float heightTravelled = transform.position.y - originalHeight;

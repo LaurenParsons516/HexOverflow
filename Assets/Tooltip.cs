@@ -10,18 +10,20 @@ public class Tooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     private GameObject tooltip;
     public string functionName;
 
+    // Show tooltip when hovering over icon
     public void OnPointerEnter(PointerEventData eventData)
     {
         tooltip.GetComponent<Text>().text = functionName;
         tooltip.transform.localScale = new Vector3(1, 1, 1);
     }
 
+    // Hide tooltip when not hovering over icon
     public void OnPointerExit(PointerEventData eventData)
     {
         tooltip.transform.localScale = new Vector3(0, 0, 0);
     }
 
-    // Start is called before the first frame update
+    // HIde tooltip by default
     void Start()
     {
         tooltip = GameObject.Find("AttackTooltip");

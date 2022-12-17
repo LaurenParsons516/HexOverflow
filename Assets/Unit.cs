@@ -14,6 +14,7 @@ public class Unit : MonoBehaviour
     public int maxHP;
     public int currentHP;
 
+    // Lowers HP to take damage
     public bool TakeDamage(int damage)
     {
         currentHP -= damage;
@@ -31,6 +32,7 @@ public class Unit : MonoBehaviour
         }
     }
 
+    // Raises HP to heal
     public void Heal(int amount)
     {
         currentHP += amount;

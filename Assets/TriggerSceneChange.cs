@@ -20,6 +20,8 @@ public class TriggerSceneChange : MonoBehaviour
         StartCoroutine(CheckDistance());
     }
 
+
+    // Changes scene once player is close to enemy
     IEnumerator CheckDistance()
     {
         if (Vector3.Distance(Enemy.transform.position, Player.transform.position) < 25)

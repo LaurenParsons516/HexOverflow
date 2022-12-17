@@ -13,6 +13,7 @@ public class JumpCheck : MonoBehaviour
     }
 
     // Update is called once per frame
+    // Checks if player is jumping... if so... play fire animation
     void Update()
     {
         if (playerMove.onGround)

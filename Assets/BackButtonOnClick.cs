@@ -18,6 +18,7 @@ public class BackButtonOnClick : MonoBehaviour
         
     }
 
+    // Loads main scene
     public void MainScene()
     {
         SceneManager.LoadScene(0);

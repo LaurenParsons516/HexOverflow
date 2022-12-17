@@ -36,7 +36,7 @@ public class Movement : MonoBehaviour
             Rb.velocity = new Vector2(Rb.velocity.x, 0);
         }
 
-        // Input
+        // Input from keyboard
         bool space = Input.GetKey(KeyCode.Space);
         bool rightKey = Input.GetKey(KeyCode.RightArrow);
         bool leftKey = Input.GetKey(KeyCode.LeftArrow);

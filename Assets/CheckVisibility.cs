@@ -13,6 +13,7 @@ public class CheckVisibility : MonoBehaviour
     }
 
     // Update is called once per frame
+    // Checks to see if specialAttackType is unlocked... if it is... show icon
     void Update()
     {
         if (!FunctionTracker.IsUnlocked(specialAttackType))

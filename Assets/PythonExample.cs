@@ -6,6 +6,7 @@ using UnityEngine;
 public class PythonExample : MonoBehaviour {
 
     // Use this for initialization
+    // Currently not in use
     void Start()
     {
         var engine = Python.CreateEngine();

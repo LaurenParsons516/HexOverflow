@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CoinCollect : MonoBehaviour
 {
+    // Checks to see if player collided with PythonFunction gameobject... if so destroy it
     private void OnTriggerEnter2D(Collider2D collider2D)
     {
         if (collider2D.gameObject.CompareTag("PythonFunction"))

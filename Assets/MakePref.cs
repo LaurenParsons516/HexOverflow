@@ -21,6 +21,7 @@ public class MakePref : MonoBehaviour
         
     }
 
+    // Unlocks specialAttackType to allow player to use it later in battle
     private void OnTriggerEnter2D(Collider2D other)
     {
         StartCoroutine(TriggerText());
@@ -31,6 +32,7 @@ public class MakePref : MonoBehaviour
         
     }
 
+    // Notifies player which function they collected and that they can use it later in battle
     IEnumerator TriggerText()
     {
         notif.text = "You've collected the " + specialAttackType + " function!\nYou can use this function later in battle.";
